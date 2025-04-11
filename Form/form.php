@@ -60,7 +60,7 @@
 </html>
 
 <?php
-require "DBcon.php";
+require "DBConnect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset(
         $_POST['e1'],

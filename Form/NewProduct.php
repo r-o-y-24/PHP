@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['seller_email'])) {
+    echo "<script>
+            alert('Please login first.');
+            window.location.href='sellerLogin.php';
+          </script>";
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,6 +26,13 @@
 
 <body>
     <h1>Add Product!</h1>
+    <nav class="navbar navbar-light bg-light">
+  <span class="navbar-text">
+    Logged in as: <?php echo $_SESSION['seller_email']; ?>
+  </span>
+  <a href="sellerlogout.php" class="btn btn-outline-danger">Logout</a>
+</nav>
+
     <form method="post" action="NewProduct.php">
         <div class="form-group">
             <label for="exampleInput">Product ID</label>
@@ -74,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "
                     <script>
                         alert('Reg Successful.');
-                        window.location.href='IncReq.php';
+                        window.location.href='Modify.php';
                     </script>
                 ";
         } else {
